@@ -1,8 +1,6 @@
 "use client"
 
-import React from 'react';
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { handleRegister } from '@/logic/register';
 
@@ -11,6 +9,8 @@ import { useRouter } from 'next/navigation';
 export const Register =  () => {
 
   const router = useRouter();
+
+  const [isValidImage, setIsValidImage] = useState(false)
   
   const [name, setName] = useState('');
   
@@ -20,12 +20,28 @@ export const Register =  () => {
 
   async function handleRegisterClick() {
 
-    handleRegister(name, age, image)
 
-    router.push('/login')
+    if (!name || age || image) {
+
+      alert('Harap isi seluruh form');
+      
+    } else {
+      
+      handleRegister(name, age, image);
+  
+      router.push('/login');
+
+    }
+    
   
 
   }
+
+  useEffect(() => {
+
+    setIsValidImage(image.includes('facebook.com'));
+
+  }, [image]);
   
   return (
     <div className='flex flex-col justify-center h-screen items-centern'>
@@ -65,6 +81,15 @@ export const Register =  () => {
           Register
         </button>
       </div>
+      {image && (
+        <div className='text-center'>
+          {!isValidImage ? (
+            <p>Allowed source image only from facebook.com</p>
+          ) : (
+            <p>Whitelisted</p>
+          )}
+        </div>
+      )}
     </div>
   )
 }
