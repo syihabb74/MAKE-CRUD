@@ -21,7 +21,7 @@ export const Login = () => {
   
     if ( !user ) {
   
-      alert(`You're Registered`)
+      alert(`You're Not Registered`)
   
       return;
   
