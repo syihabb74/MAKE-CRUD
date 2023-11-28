@@ -21,7 +21,7 @@ export const Register =  () => {
   async function handleRegisterClick() {
 
 
-    if (!name || age || image) {
+    if (!name || !age || !image) {
 
       alert('Harap isi seluruh form');
       
