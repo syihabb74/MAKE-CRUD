@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
 
-
 export const Dashboard = () => {
 
         const [user, setUser] = useState();
