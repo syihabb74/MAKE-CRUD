@@ -26,6 +26,8 @@ export const Register =  () => {
       alert('Harap isi seluruh form');
       
     } else {
+
+      alert('Register Succesfully')
       
       handleRegister(name, age, image);
   
